@@ -6,10 +6,10 @@ const hundreds = ['', 'сто', 'двісті', 'триста', 'чотирис�
 
 
 function ToWords(number) {
-    if(number>=999){
+    if(number>=999 || isNaN(number)){
         return 'Введіть число у рамках 0-999'
     }
-    if (number === 0) {
+    if (number == 0) {
         return 'нуль';
     }
     let words = '';
