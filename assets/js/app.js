@@ -27,13 +27,14 @@ let Input = document.getElementById("inputValue");
 let words = document.getElementById("result");
 
 Button.addEventListener("click", function() {
-    let IV1=ToWords(Input.value);
-    let IV2=ToWords(Input.value) +' гривен';
-    if(ToWords(Input.value)!='Введіть число у рамках 0-999'){
-        words.textContent= IV1.charAt(0).toUpperCase() + IV1.slice(1);
+    if(Input.value){
+        let IV=ToWords(Input.value);
+        if(ToWords(Input.value)!='Введіть число у рамках 0-999'){
+            words.textContent= IV.charAt(0).toUpperCase() + IV.slice(1) +' гривен';
+        }
+        else{
+            words.textContent= IV.charAt(0).toUpperCase() + IV.slice(1);
+        }
+        Input.value=''
     }
-    else{
-        words.textContent= IV2.charAt(0).toUpperCase() + IV2.slice(1);
-    }
-    Input.value=''
 });
