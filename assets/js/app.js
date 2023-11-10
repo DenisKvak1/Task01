@@ -12,7 +12,7 @@ function ToWords(number) {
         return 'Введіть число у рамках 0-999'
     }
     if (number == 0) {
-        return 'нуль';
+        return ['нуль',''];
     }
     let words = '';
     words = words+hundreds[Math.floor(number / 100)] + ' ';
@@ -51,9 +51,6 @@ Button.addEventListener("click", function() {
         let IV=ToWords(Input.value)[0];
         if(flag!=1){
             words.textContent= IV.charAt(0).toUpperCase() + IV.slice(1) +ToWords(Input.value)[1];
-
-
-            
         }
         else{
             words.textContent= IV.charAt(0).toUpperCase() + IV.slice(1);
