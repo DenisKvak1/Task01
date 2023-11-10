@@ -4,9 +4,11 @@ const teens = ['десять', 'одинадцять', 'дванадцять', '
 const tens = ['', '', 'двадцять', 'тридцять', 'сорок', 'п\'ятдесят', 'шістдесят', 'сімдесят', 'вісімдесят', 'дев\'яносто'];
 const hundreds = ['', 'сто', 'двісті', 'триста', 'чотириста', 'п\'ятсот', 'шістсот', 'сімсот', 'вісімсот', 'дев\'ятсот'];
 
-
+let flag=0;
 function ToWords(number) {
-    if(number>=999 || isNaN(number)){
+    let grug=''
+    if(number>999 || isNaN(number)){
+        flag=1
         return 'Введіть число у рамках 0-999'
     }
     if (number == 0) {
@@ -20,7 +22,28 @@ function ToWords(number) {
     } else {
         words = words+ tens[Math.floor(number / 10)] + ' ' + units[number % 10] + ' ';
     }
-    return words.trim();
+    console.log(number % 10)
+
+    switch (number % 10) {
+        case 1:
+            grug=' гривня'
+            break;
+        case 2:
+        case 3:
+        case 4:
+            grug=' гривні' 
+            break;
+        case 5:
+        case 6:    
+        case 7:     
+        case 8:  
+        case 9:             
+        case 0:
+            grug=' гривень'
+            break;
+      }
+    console.log(grug)
+    return [words.trim(), grug];
 }
 let Button = document.getElementById("calcB");
 let Input = document.getElementById("inputValue");
@@ -28,13 +51,17 @@ let words = document.getElementById("result");
 
 Button.addEventListener("click", function() {
     if(Input.value){
-        let IV=ToWords(Input.value);
-        if(ToWords(Input.value)!='Введіть число у рамках 0-999'){
-            words.textContent= IV.charAt(0).toUpperCase() + IV.slice(1) +' гривен';
+        let IV=ToWords(Input.value)[0];
+        if(flag!=1){
+            words.textContent= IV.charAt(0).toUpperCase() + IV.slice(1) +ToWords(Input.value)[1];
+
+
+            
         }
         else{
             words.textContent= IV.charAt(0).toUpperCase() + IV.slice(1);
         }
+        flag=0;
         Input.value=''
     }
 });
