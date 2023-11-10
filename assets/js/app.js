@@ -6,7 +6,8 @@ const hundreds = ['', 'сто', 'двісті', 'триста', 'чотирис�
 
 let flag=0;
 function ToWords(number) {
-    let grug=''
+    let grug='';
+    let initialNumber=number;
     if(number>999 || isNaN(number)){
         flag=1
         return 'Введіть число у рамках 0-999'
@@ -31,7 +32,7 @@ function ToWords(number) {
         grug=' гривень'
         break;  
     }
-    if (number == 0) {
+    if (initialNumber == 0) {
         return ['нуль',grug];
     }  
     return [words.trim(), grug];
