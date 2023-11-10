@@ -11,9 +11,6 @@ function ToWords(number) {
         flag=1
         return 'Введіть число у рамках 0-999'
     }
-    if (number == 0) {
-        return ['нуль',''];
-    }
     let words = '';
     words = words+hundreds[Math.floor(number / 100)] + ' ';
     number = number % 100;
@@ -39,7 +36,10 @@ function ToWords(number) {
         case 0:
             grug=' гривень'
             break;
-    }
+      }
+    if (number == 0) {
+        return ['нуль',grug];
+    }  
     return [words.trim(), grug];
 }
 let Button = document.getElementById("calcB");
@@ -48,13 +48,7 @@ let words = document.getElementById("result");
 
 Button.addEventListener("click", function() {
     if(Input.value){
-        let IV;
-        if(ToWords(Input.value).length!=1){
-            IV=ToWords(Input.value)[0];
-        }
-        else{
-            IV=ToWords(Input.value)
-        }
+        let IV=ToWords(Input.value)[0];
         if(flag!=1){
             words.textContent= IV.charAt(0).toUpperCase() + IV.slice(1) +ToWords(Input.value)[1];
         }
