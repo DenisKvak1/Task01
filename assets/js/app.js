@@ -53,7 +53,7 @@ Button.addEventListener("click", function() {
             words.textContent= IV.charAt(0).toUpperCase() + IV.slice(1) +ToWords(Input.value)[1];
         }
         else{
-            words.textContent= IV.charAt(0).toUpperCase() + IV.slice(1);
+            words.textContent= ToWords(Input.value).charAt(0).toUpperCase() + ToWords(Input.value).slice(1);
         }
         flag=0;
         Input.value=''
