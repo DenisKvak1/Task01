@@ -19,24 +19,18 @@ function ToWords(number) {
     } else {
         words = words+ tens[Math.floor(number / 10)] + ' ' + units[number % 10] + ' ';
     }
-    switch (number % 10) {
-        case 1:
-            grug=' гривня'
-            break;
-        case 2:
-        case 3:
-        case 4:
-            grug=' гривні' 
-            break;
-        case 5:
-        case 6:    
-        case 7:     
-        case 8:  
-        case 9:             
-        case 0:
-            grug=' гривень'
-            break;
-      }
+      let numb=number % 10
+    switch (true) {
+      case (numb==1):
+        grug=' гривня'
+        break;;
+      case (numb >=2 && numb <=4):
+        grug=' гривні' 
+        break;
+      case (numb >=5 && numb <=9 || numb==0):
+        grug=' гривень'
+        break;  
+    }
     if (number == 0) {
         return ['нуль',grug];
     }  
