@@ -19,7 +19,7 @@ function ToWords(number) {
     } else {
         words = words+ tens[Math.floor(number / 10)] + ' ' + units[number % 10] + ' ';
     }
-      let numb=number % 10
+    let numb=number % 10
     switch (true) {
       case (numb==1):
         grug=' гривня'
