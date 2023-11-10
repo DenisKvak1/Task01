@@ -48,7 +48,13 @@ let words = document.getElementById("result");
 
 Button.addEventListener("click", function() {
     if(Input.value){
-        let IV=ToWords(Input.value)[0];
+        let IV;
+        if(ToWords(Input.value).length!=1){
+            IV=ToWords(Input.value)[0];
+        }
+        else{
+            IV=ToWords(Input.value)
+        }
         if(flag!=1){
             words.textContent= IV.charAt(0).toUpperCase() + IV.slice(1) +ToWords(Input.value)[1];
         }
