@@ -22,8 +22,6 @@ function ToWords(number) {
     } else {
         words = words+ tens[Math.floor(number / 10)] + ' ' + units[number % 10] + ' ';
     }
-    console.log(number % 10)
-
     switch (number % 10) {
         case 1:
             grug=' гривня'
@@ -41,8 +39,7 @@ function ToWords(number) {
         case 0:
             grug=' гривень'
             break;
-      }
-    console.log(grug)
+    }
     return [words.trim(), grug];
 }
 let Button = document.getElementById("calcB");
