@@ -28,7 +28,7 @@ function ToWords(number) {
     number = number % 1000000000;
     words = words + processNumber(Math.floor(number / 1000000), millions, true);
     number = number % 1000000;
-    words = words + processNumber(Math.floor(number / 1000), thousands, true);
+    words = words + processNumber(Math.floor(number / 1000), thousands);
     number = number % 1000;
     words = words + oneHundreds(number);
 
