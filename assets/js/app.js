@@ -1,4 +1,5 @@
 const units = ['', 'одна', 'дві', 'три', 'чотири', 'п\'ять', 'шість', 'сім', 'вісім', 'дев\'ять'];
+const unitsF = ['', 'один', 'два', 'три', 'чотири', 'п\'ять', 'шість', 'сім', 'вісім', 'дев\'ять'];
 const teens = ['десять', 'одинадцять', 'дванадцять', 'тринадцять', 'чотирнадцять', 'п\'ятнадцять', 'шістнадцять', 'сімнадцять', 'вісімнадцять', 'дев\'ятнадцять'];
 const tens = ['', '', 'двадцять', 'тридцять', 'сорок', 'п\'ятдесят', 'шістдесят', 'сімдесят', 'вісімдесят', 'дев\'яносто'];
 const hundreds = ['', 'сто', 'двісті', 'триста', 'чотириста', 'п\'ятсот', 'шістсот', 'сімсот', 'вісімсот', 'дев\'ятсот'];
@@ -53,7 +54,7 @@ function oneHundreds(number) {
     if (number >= 10 && number <= 19) {
         words = words + teens[number - 10] + ' ';
     } else {
-        words = words + tens[Math.floor(number / 10)] + ' ' + units[number % 10] + ' ';
+        words = words + tens[Math.floor(number / 10)] + ' ' +( number>999999 ? units[number % 10]:unitsF[number % 10] ) + ' ';
     }
     return words.trim();
 }
@@ -63,7 +64,7 @@ function processNumber(number, suffixArray) {
     let words = oneHundreds(number);
     let numb = number % 10;
 
-    switch (true) {
+    switch (true) { 
         case (numb == 1):
             words += ` ${suffixArray[1]} `;
             break;
