@@ -24,11 +24,11 @@ function ToWords(number) {
     }
     
     let words = '';
-    words = processNumber(Math.floor(number / 1000000000), billions)
+    words = processNumber(Math.floor(number / 1000000000), billions, true)
     number = number % 1000000000;
-    words = words + processNumber(Math.floor(number / 1000000), millions);
+    words = words + processNumber(Math.floor(number / 1000000), millions, true);
     number = number % 1000000;
-    words = words + processNumber(Math.floor(number / 1000), thousands);
+    words = words + processNumber(Math.floor(number / 1000), thousands, true);
     number = number % 1000;
     words = words + oneHundreds(number);
 
@@ -47,21 +47,21 @@ function ToWords(number) {
     return [words.trim(), grug];
 }
 
-function oneHundreds(number) {
+function oneHundreds(number, flag=false) {
     let words = '';
     words = words + hundreds[Math.floor(number / 100)] + ' ';
     number = number % 100;
     if (number >= 10 && number <= 19) {
         words = words + teens[number - 10] + ' ';
     } else {
-        words = words + tens[Math.floor(number / 10)] + ' ' +( number>999999 ? units[number % 10]:unitsF[number % 10] ) + ' ';
+        words = words + tens[Math.floor(number / 10)] + ' ' +( flag ? unitsF[number % 10]:units[number % 10] ) + ' ';
     }
     return words.trim();
 }
 
-function processNumber(number, suffixArray) {
+function processNumber(number, suffixArray, flag=false) {
     if (number === 0) return '';
-    let words = oneHundreds(number);
+    let words = oneHundreds(number, flag);
     let numb = number % 10;
 
     switch (true) { 
