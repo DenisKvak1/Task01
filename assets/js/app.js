@@ -13,6 +13,7 @@ function containsCommaOrDot(numberString) {
 }
 
 function ToWords(number) {
+    let ultraNumb= number%100
     let grug = '';
     if (number<0 ||number > 999999999999 || isNaN(number) || containsCommaOrDot(number)) {
         return false;
@@ -32,13 +33,13 @@ function ToWords(number) {
 
     let numb = number % 10;
     switch (true) {
-        case (numb == 1 && (number<11 || number>14)):
+        case (numb == 1 && (ultraNumb<11 || ultraNumb>14)):
             grug = ' гривня';
             break;
-        case (numb >= 2 && numb <= 4 && (number<11 || number>14)):
+        case (numb >= 2 && numb <= 4 && (ultraNumb<11 || ultraNumb>14)):
             grug = ' гривні';
             break;
-        case (numb >= 5 && numb <= 9 || numb == 0 || (number>=11 && number<=14)):
+        case (numb >= 5 && numb <= 9 || numb == 0 || (ultraNumb>=11 && ultraNumb<=14)):
             grug = ' гривень';
             break;
     }
