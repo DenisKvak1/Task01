@@ -8,7 +8,6 @@ const thousands = ['', 'тисяча', 'тисячі', 'тисяч'];
 const millions = ['', 'мільйон', 'мільйона', 'мільйонів'];
 const billions = ['', 'мільярд', 'мільярда', 'мільярдів'];
 
-let flag = 0;
 function containsCommaOrDot(numberString) {
     return /[,.]/.test(numberString);
 }
@@ -16,8 +15,7 @@ function containsCommaOrDot(numberString) {
 function ToWords(number) {
     let grug = '';
     if (number<0 ||number > 999999999999 || isNaN(number) || containsCommaOrDot(number)) {
-        flag = 1;
-        return 'Введіть число у рамках 0-999999999999, ціле без копійок';
+        return false;
     }
     if (number === 0) {
         return ['нуль', grug];
@@ -85,12 +83,11 @@ let words = document.getElementById("result");
 Button.addEventListener("click", function () {
     if (Input.value) {
         let IV = ToWords(Input.value)[0];
-        if (flag != 1) {
+        if (ToWords(Input.value)) {
             words.textContent = IV.charAt(0).toUpperCase() + IV.slice(1) + ToWords(Input.value)[1];
         } else {
-            words.textContent = ToWords(Input.value).charAt(0).toUpperCase() + ToWords(Input.value).slice(1);
+            words.textContent = 'Введіть число у рамках 0-999999999999, ціле без копійок';
         }
-        flag = 0;
         Input.value = '';
     }
 });
