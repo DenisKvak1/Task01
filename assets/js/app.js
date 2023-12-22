@@ -63,15 +63,14 @@ function processNumber(number, suffixArray, flag=false) {
     if (number === 0) return '';
     let words = oneHundreds(number, flag);
     let numb = number % 10;
-
     switch (true) { 
-        case (numb == 1):
+        case (numb == 1 (number<11 || number>14)):
             words += ` ${suffixArray[1]} `;
             break;
-        case (numb >= 2 && numb <= 4):
+        case (numb >= 2 && numb <= 4 && (number<11 || number>14)):
             words += ` ${suffixArray[2]} `;
             break;
-        case (numb >= 5 && numb <= 9 || numb == 0):
+        case (numb >= 5 && numb <= 9 || numb == 0 || (number>=11 && number<=14)):
             words += ` ${suffixArray[3]} `;
             break;
     }
